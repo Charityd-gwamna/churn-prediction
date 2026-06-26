@@ -134,7 +134,7 @@ st.markdown("""
 # ── LOAD DATA & MODEL ─────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv("C:/Users/pc/churn-prediction/WA_Fn-UseC_-Telco-Customer-Churn.csv")
+    df = pd.read_csv("WA_Fn-UseC_-Telco-Customer-Churn.csv")
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce').fillna(0)
     df['Churn_Binary'] = df['Churn'].map({'Yes': 1, 'No': 0})
     df['SeniorCitizen'] = df['SeniorCitizen'].map({1: 'Yes', 0: 'No'})
@@ -142,9 +142,9 @@ def load_data():
 
 @st.cache_resource
 def load_model():
-    with open("C:/Users/pc/churn-prediction/churn_model.pkl", "rb") as f:
+    with open("churn_model.pkl", "rb") as f:
         model = pickle.load(f)
-    with open("C:/Users/pc/churn-prediction/model_features.pkl", "rb") as f:
+    with open("model_features.pkl", "rb") as f:
         features = pickle.load(f)
     return model, features
 
